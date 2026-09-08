@@ -51,23 +51,65 @@ public class Game {
 			System.out.println();
 			BingoCard.showCard(card, turn, number);
 			if (BingoService.isBingo(card)) {
-				showResult(scanner, player, size, turn);
+				showNormalResult(scanner, player, size, turn);
 				break;
 			}
 			System.out.print("\n" + Color.ORANGE + "[ENTER]" + Color.RESET + " 次へ");
 			scanner.nextLine();
 		}
+
 	}
 
 	public static void startEndless(Scanner scanner, Player player, int size) {
+		int[][] card = BingoCard.createCard(size);
+		NumberGenerator generator = new NumberGenerator();
 
+		int turn = 0;
+		int lastBingoTurn = 0;
+		int bingoCount = 0;
+
+		int totalBingo = size * 2 + 2;
+
+		while (bingoCount < totalBingo) {
+			int number = generator.nextNumber();
+			BingoCard.openNumber(card, number);
+			turn++;
+
+			System.out.println();
+			BingoCard.showCard(card, turn, number);
+
+			int currentBingoCount = BingoService.countBingo(card);
+
+			if (currentBingoCount > bingoCount) {
+				int newBingoCount = currentBingoCount - bingoCount;
+				int bingoTurn = turn - lastBingoTurn;
+
+				bingoCount = currentBingoCount;
+				lastBingoTurn = turn;
+
+				System.out.println("[ " + Color.ORANGE + bingoTurn + Color.RESET + " TURN BINGO ]");
+				Menu.printLine();
+				System.out.println("TOTAL BINGO	: " + Color.ORANGE + bingoCount + Color.RESET);
+				System.out.println("BINGO 		: " + Color.ORANGE + newBingoCount + Color.RESET);
+
+				if (bingoCount < totalBingo) {
+					System.out.print("\n" + Color.ORANGE + "[ENTER]" + Color.RESET + " 次のBINGOへ");
+					scanner.nextLine();
+				}
+			} else {
+				System.out.print("\n" + Color.ORANGE + "[ENTER]" + Color.RESET + " 次へ");
+				scanner.nextLine();
+			}
+		}
+
+		showEndlessResult(scanner, player, size, turn, bingoCount);
 	}
 
 	public static void startChallenge(Scanner scanner, Player player, int size) {
 
 	}
 
-	public static void showResult(Scanner scanner, Player player, int size, int turn) {
+	public static void showNormalResult(Scanner scanner, Player player, int size, int turn) {
 		boolean isBest = ScoreService.updateBestTurn(player, size, turn);
 		int score = ScoreService.calculateScore(size, turn);
 		System.out.print("\n" + Color.ORANGE + "[ENTER]" + Color.RESET + " 結果を見る");
@@ -92,6 +134,32 @@ public class Game {
 				System.out.println("BEST TURN	: " + Color.ORANGE + player.getBestTurn7x7() + Color.RESET);
 				break;
 			}
+		}
+		System.out.println("TURN		: " + Color.ORANGE + turn + Color.RESET + "\n");
+		Menu.printLine();
+		System.out.print(Color.ORANGE + "[ENTER]" + Color.RESET + " 終了");
+		scanner.nextLine();
+		System.out.println();
+	}
+
+	public static void showEndlessResult(Scanner scanner, Player player, int size, int turn, int bingoCount) {
+		boolean isBest = player.getEndlessTurn() == 0 || turn < player.getEndlessTurn();
+		if (isBest) {
+			player.setEndlessTurn(turn);
+		}
+		System.out.print("\n" + Color.ORANGE + "[ENTER]" + Color.RESET + " 結果を見る");
+		scanner.nextLine();
+		Menu.printTitle("GAME CLEAR");
+		System.out.println("\n[ " + Color.ORANGE + "RESULT" + Color.RESET + " ]");
+		Menu.printLine();
+		System.out.println("\nPLAYER		: " + Color.ORANGE + player.getName() + Color.RESET);
+		System.out.println("TOTAL BINGO	: " + Color.ORANGE + bingoCount + Color.RESET);
+
+		if (isBest) {
+			System.out.println("BEST TURN	: " + Color.ORANGE + turn + Color.RESET + " (" + Color.ORANGE
+					+ " NEW " + Color.RESET + ")");
+		} else {
+			System.out.println("BEST TURN	: " + Color.ORANGE + player.getEndlessTurn() + Color.RESET);
 		}
 		System.out.println("TURN		: " + Color.ORANGE + turn + Color.RESET + "\n");
 		Menu.printLine();

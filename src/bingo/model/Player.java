@@ -7,14 +7,17 @@ public class Player {
 	private int bestTurn3x3;
 	private int bestTurn5x5;
 	private int bestTurn7x7;
+	private int endlessTurn;
 
 	public Player(String name) {
 		this.name = name;
-		this.mode = "NORMAL";
+		//	this.mode = "NORMAL";
+		this.mode = "ENDLESS";
 
 		bestTurn3x3 = 0;
 		bestTurn5x5 = 0;
 		bestTurn7x7 = 0;
+		endlessTurn = 0;
 	}
 
 	public String getName() {
@@ -57,4 +60,11 @@ public class Player {
 		this.bestTurn7x7 = bestTurn7x7;
 	}
 
+	public int getEndlessTurn() {
+		return endlessTurn;
+	}
+
+	public void setEndlessTurn(int endlessTurn) {
+		this.endlessTurn = endlessTurn;
+	}
 }
