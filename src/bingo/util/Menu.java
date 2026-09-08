@@ -22,6 +22,7 @@ public class Menu {
 		System.out.println("│ NAME : " + Color.ORANGE + player.getName() + Color.RESET);
 		System.out.println("│ MODE : " + Color.ORANGE + player.getMode() + Color.RESET);
 		System.out.println("└──────────────────────────────────────┘");
+		
 		System.out.println("┌─ " + Color.ORANGE + "MODE" + Color.RESET + " ───────────────────────────────┐");
 
 		System.out.println("│ " + Color.ORANGE + "NORMAL" + Color.RESET + "     │ 3 × 3 BEST : "

@@ -114,31 +114,29 @@ public class Game {
 		System.out.print("\n" + Color.ORANGE + "[ENTER]" + Color.RESET + " 結果を見る");
 		scanner.nextLine();
 		Menu.printTitle("GAME CLEAR");
-		System.out.println("\n[ " + Color.ORANGE + "RESULT" + Color.RESET + " ]");
-		Menu.printLine();
-		System.out.println("\nPLAYER		: " + Color.ORANGE + player.getName() + Color.RESET);
-		System.out.println("SCORE		: " + Color.ORANGE + score + Color.RESET);
+		System.out.println("\n┌─ " + Color.ORANGE + "RESULT" + Color.RESET + " ─────────────────────────────┐");
+		System.out.println("│ PLAYER	: " + Color.ORANGE + player.getName() + Color.RESET);
+		System.out.println("│ SCORE		: " + Color.ORANGE + score + Color.RESET);
 		if (isBest) {
-			System.out.println("BEST TURN	: " + Color.ORANGE + turn + Color.RESET + " (" + Color.ORANGE
+			System.out.println("│ BEST TURN	: " + Color.ORANGE + turn + Color.RESET + " (" + Color.ORANGE
 					+ " NEW " + Color.RESET + ")");
 		} else {
 			switch (size) {
 			case 3:
-				System.out.println("BEST TURN	: " + Color.ORANGE + player.getBestTurn3x3() + Color.RESET);
+				System.out.println("│ BEST TURN	: " + Color.ORANGE + player.getBestTurn3x3() + Color.RESET);
 				break;
 			case 5:
-				System.out.println("BEST TURN	: " + Color.ORANGE + player.getBestTurn5x5() + Color.RESET);
+				System.out.println("│ BEST TURN	: " + Color.ORANGE + player.getBestTurn5x5() + Color.RESET);
 				break;
 			case 7:
-				System.out.println("BEST TURN	: " + Color.ORANGE + player.getBestTurn7x7() + Color.RESET);
+				System.out.println("│ BEST TURN	: " + Color.ORANGE + player.getBestTurn7x7() + Color.RESET);
 				break;
 			}
 		}
-		System.out.println("TURN		: " + Color.ORANGE + turn + Color.RESET + "\n");
-		Menu.printLine();
-		System.out.print(Color.ORANGE + "[ENTER]" + Color.RESET + " 終了");
+		System.out.println("│ TURN		: " + Color.ORANGE + turn + Color.RESET + "");
+		System.out.println("└──────────────────────────────────────┘");
+		System.out.print(Color.ORANGE + "\n[ENTER]" + Color.RESET + " 終了");
 		scanner.nextLine();
-		System.out.println();
 	}
 
 	public static void showEndlessResult(Scanner scanner, Player player, int size, int turn, int bingoCount) {
@@ -149,22 +147,20 @@ public class Game {
 		System.out.print("\n" + Color.ORANGE + "[ENTER]" + Color.RESET + " 結果を見る");
 		scanner.nextLine();
 		Menu.printTitle("GAME CLEAR");
-		System.out.println("\n[ " + Color.ORANGE + "RESULT" + Color.RESET + " ]");
-		Menu.printLine();
-		System.out.println("\nPLAYER		: " + Color.ORANGE + player.getName() + Color.RESET);
-		System.out.println("TOTAL BINGO	: " + Color.ORANGE + bingoCount + Color.RESET);
+		System.out.println("\n┌─ " + Color.ORANGE + "RESULT" + Color.RESET + " ─────────────────────────────┐");
+		System.out.println("│ PLAYER	: " + Color.ORANGE + player.getName() + Color.RESET);
+		System.out.println("│ TOTAL BINGO	: " + Color.ORANGE + bingoCount + Color.RESET);
 
 		if (isBest) {
-			System.out.println("BEST TURN	: " + Color.ORANGE + turn + Color.RESET + " (" + Color.ORANGE
+			System.out.println("│ BEST TURN	: " + Color.ORANGE + turn + Color.RESET + " (" + Color.ORANGE
 					+ "NEW" + Color.RESET + ")");
 		} else {
-			System.out.println("BEST TURN	: " + Color.ORANGE + player.getEndlessTurn() + Color.RESET);
+			System.out.println("│ BEST TURN	: " + Color.ORANGE + player.getEndlessTurn() + Color.RESET);
 		}
-		System.out.println("TURN		: " + Color.ORANGE + turn + Color.RESET + "\n");
-		Menu.printLine();
-		System.out.print(Color.ORANGE + "[ENTER]" + Color.RESET + " 終了");
+		System.out.println("│ TURN		: " + Color.ORANGE + turn + Color.RESET + "");
+		System.out.println("└──────────────────────────────────────┘");
+		System.out.print(Color.ORANGE + "\n[ENTER]" + Color.RESET + " 終了");
 		scanner.nextLine();
-		System.out.println();
 	}
 
 	public static void showChallengeResult(Scanner scanner, Player player, int size, int turn) {
