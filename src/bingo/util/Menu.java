@@ -17,16 +17,30 @@ public class Menu {
 
 	public static void showMainMenu(Player player) {
 		printTitle("MAIN MENU");
-		System.out.println("PLAYER NAME	: " + Color.ORANGE + player.getName() + Color.RESET);
-		System.out.println("◆ " + Color.ORANGE + "NORMAL" + Color.RESET);
-		System.out.println(" 3 × 3 BEST	: " + Color.ORANGE + player.getBestTurn3x3() + Color.RESET);
-		System.out.println(" 5 × 5 BEST	: " + Color.ORANGE + player.getBestTurn5x5() + Color.RESET);
-		System.out.println(" 7 × 7 BEST	: " + Color.ORANGE + player.getBestTurn7x7() + Color.RESET);
-		System.out.println("◆ " + Color.ORANGE + "ENDLESS" + Color.RESET);
-		System.out.println(" TOTAL TURN	: " + Color.ORANGE + player.getEndlessTurn() + Color.RESET);
-		System.out.println("◆ " + Color.ORANGE + "CHALLENGE" + Color.RESET);
-		System.out.println(" CLEARED	:" + Color.ORANGE + " Yes/No" + Color.RESET);
-		printLine();
+		//		System.out.println("PLAYER NAME	: " + Color.ORANGE + player.getName() + Color.RESET);
+		System.out.println("┌─ " + Color.ORANGE + "PLAYER" + Color.RESET + " ─────────────────────────────┐");
+		System.out.println(
+				"│ NAME\t: " + Color.ORANGE + player.getName() + Color.RESET
+						+ "\t\t MODE\t: " + Color.ORANGE + player.getMode() + Color.RESET + "       │");
+		System.out.println("└──────────────────────────────────────┘");
+
+		System.out.println("┌─ " + Color.ORANGE + "MODE" + Color.RESET + " ───────────────────────────────┐");
+
+		System.out.println("│ " + Color.ORANGE + "NORMAL" + Color.RESET + "     │ 3 × 3 BEST : "
+				+ Color.ORANGE + player.getBestTurn3x3() + Color.RESET + "          │");
+		System.out.println("│            │ 5 × 5 BEST : "
+				+ Color.ORANGE + player.getBestTurn5x5() + Color.RESET + "          │");
+		System.out.println("│            │ 7 × 7 BEST : "
+				+ Color.ORANGE + player.getBestTurn7x7() + Color.RESET + "          │");
+
+		System.out.println("│ " + Color.ORANGE + "ENDLESS" + Color.RESET + "    │ TOTAL TURN : "
+				+ Color.ORANGE + player.getEndlessTurn() + Color.RESET + "          │");
+
+		System.out.println("│ " + Color.ORANGE + "CHALLENGE" + Color.RESET + "  │ CLEARED	  : "
+				+ Color.ORANGE + "Yes/No" + Color.RESET + "     │");
+
+		System.out.println("└──────────────────────────────────────┘");
+
 		System.out.println(Color.ORANGE + "1." + Color.RESET + " ゲーム開始");
 		System.out.println(Color.ORANGE + "2." + Color.RESET + " 設定");
 		System.out.println(Color.ORANGE + "3." + Color.RESET + " 遊び方");

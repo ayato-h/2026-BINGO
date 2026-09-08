@@ -101,7 +101,6 @@ public class Game {
 				scanner.nextLine();
 			}
 		}
-
 		showEndlessResult(scanner, player, size, turn, bingoCount);
 	}
 
@@ -157,7 +156,7 @@ public class Game {
 
 		if (isBest) {
 			System.out.println("BEST TURN	: " + Color.ORANGE + turn + Color.RESET + " (" + Color.ORANGE
-					+ " NEW " + Color.RESET + ")");
+					+ "NEW" + Color.RESET + ")");
 		} else {
 			System.out.println("BEST TURN	: " + Color.ORANGE + player.getEndlessTurn() + Color.RESET);
 		}
@@ -166,5 +165,9 @@ public class Game {
 		System.out.print(Color.ORANGE + "[ENTER]" + Color.RESET + " 終了");
 		scanner.nextLine();
 		System.out.println();
+	}
+
+	public static void showChallengeResult(Scanner scanner, Player player, int size, int turn) {
+
 	}
 }
