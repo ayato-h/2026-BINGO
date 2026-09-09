@@ -22,4 +22,17 @@ public class Input {
 			System.out.print(Color.RED + "> " + min + "～" + max + "の数字を入力してください。" + Color.RESET + "\n▶ ");
 		}
 	}
+
+	public static void waitEnter(Scanner scanner) {
+		long start = System.currentTimeMillis();
+		while (true) {
+			if (scanner.hasNextLine()) {
+				scanner.nextLine();
+
+				if (System.currentTimeMillis() - start >= 500) {
+					break;
+				}
+			}
+		}
+	}
 }

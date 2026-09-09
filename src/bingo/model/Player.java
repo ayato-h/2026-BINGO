@@ -12,7 +12,7 @@ public class Player {
 
 	public Player(String name) {
 		this.name = name;
-		this.mode = "CHALLENGE";
+		this.mode = "NORMAL";
 
 		bestTurn3x3 = 0;
 		bestTurn5x5 = 0;

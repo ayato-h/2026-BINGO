@@ -138,7 +138,7 @@ public class Game {
 		boolean isBest = ScoreService.updateBestTurn(player, size, turn);
 		int score = ScoreService.calculateScore(size, turn);
 		System.out.print("\n" + Color.ORANGE + "[ENTER]" + Color.RESET + " 結果を見る");
-		scanner.nextLine();
+		Input.waitEnter(scanner);
 		Menu.printTitle("GAME CLEAR");
 		System.out.println("\n┌─ " + Color.ORANGE + "RESULT" + Color.RESET + " ─────────────────────────────┐");
 		System.out.println("│ PLAYER	: " + Color.ORANGE + player.getName() + Color.RESET);
@@ -171,7 +171,7 @@ public class Game {
 			player.setEndlessTurn(turn);
 		}
 		System.out.print("\n" + Color.ORANGE + "[ENTER]" + Color.RESET + " 結果を見る");
-		scanner.nextLine();
+		Input.waitEnter(scanner);
 		Menu.printTitle("GAME CLEAR");
 		System.out.println("\n┌─ " + Color.ORANGE + "RESULT" + Color.RESET + " ─────────────────────────────┐");
 		System.out.println("│ PLAYER	: " + Color.ORANGE + player.getName() + Color.RESET);
@@ -192,7 +192,7 @@ public class Game {
 		int limitTurn = size * size;
 		int remainingTurn = limitTurn - turn;
 		System.out.print("\n" + Color.ORANGE + "[ENTER]" + Color.RESET + " 結果を見る");
-		scanner.nextLine();
+		Input.waitEnter(scanner);
 		if (isBingo) {
 			Menu.printTitle("CHALLENGE CLEAR");
 		} else {
