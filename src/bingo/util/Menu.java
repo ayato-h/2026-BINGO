@@ -17,28 +17,26 @@ public class Menu {
 
 	public static void showMainMenu(Player player) {
 		printTitle("MAIN MENU");
-		//		System.out.println("PLAYER NAME	: " + Color.ORANGE + player.getName() + Color.RESET);
 		System.out.println("┌─ " + Color.ORANGE + "PLAYER" + Color.RESET + " ─────────────────────────────┐");
 		System.out.println("│ NAME : " + Color.ORANGE + player.getName() + Color.RESET);
 		System.out.println("│ MODE : " + Color.ORANGE + player.getMode() + Color.RESET);
 		System.out.println("└──────────────────────────────────────┘");
-		
 		System.out.println("┌─ " + Color.ORANGE + "MODE" + Color.RESET + " ───────────────────────────────┐");
-
 		System.out.println("│ " + Color.ORANGE + "NORMAL" + Color.RESET + "     │ 3 × 3 BEST : "
 				+ Color.ORANGE + player.getBestTurn3x3() + Color.RESET);
-
 		System.out.println("│            │ 5 × 5 BEST : "
 				+ Color.ORANGE + player.getBestTurn5x5() + Color.RESET);
-
 		System.out.println("│            │ 7 × 7 BEST : "
 				+ Color.ORANGE + player.getBestTurn7x7() + Color.RESET);
-
 		System.out.println("│ " + Color.ORANGE + "ENDLESS" + Color.RESET + "    │ TOTAL TURN : "
 				+ Color.ORANGE + player.getEndlessTurn() + Color.RESET);
-
-		System.out.println("│ " + Color.ORANGE + "CHALLENGE" + Color.RESET + "  │ CLEARED 	  : "
-				+ Color.ORANGE + "Yes/No" + Color.RESET);
+		if (player.isChallengeCleared()) {
+			System.out.println("│ " + Color.ORANGE + "CHALLENGE" + Color.RESET + "  │ CLEARED 	  : "
+					+ Color.ORANGE + "CLEAR" + Color.RESET);
+		} else {
+			System.out.println("│ " + Color.ORANGE + "CHALLENGE" + Color.RESET + "  │ CLEARED 	  : "
+					+ Color.ORANGE + "FAILED" + Color.RESET);
+		}
 
 		System.out.println("└──────────────────────────────────────┘");
 
@@ -56,7 +54,6 @@ public class Menu {
 				Color.ORANGE + "1." + Color.RESET + " 名前		: " + Color.ORANGE + player.getName() + Color.RESET);
 		System.out.println(
 				Color.ORANGE + "2." + Color.RESET + " モード		: " + Color.ORANGE + player.getMode() + Color.RESET);
-		System.out.println(Color.ORANGE + "3." + Color.RESET + " 色		: ");
 		printLine();
 		System.out.println(Color.ORANGE + "0." + Color.RESET + " 戻る");
 		System.out.print("\n▶ ");
@@ -67,6 +64,7 @@ public class Menu {
 		System.out.println(Color.ORANGE + "1." + Color.RESET + " NORMAL");
 		System.out.println(Color.ORANGE + "2." + Color.RESET + " ENDLESS");
 		System.out.println(Color.ORANGE + "3." + Color.RESET + " CHALLENGE");
+		System.out.println(Color.ORANGE + "4." + Color.RESET + " モード");
 		printLine();
 		System.out.println(Color.ORANGE + "0." + Color.RESET + " 戻る");
 		System.out.print("\n▶ ");
@@ -142,13 +140,10 @@ public class Menu {
 	public static void printCenter(String text) {
 		final int width = 40;
 		String plainText = text.replaceAll("\u001B\\[[;\\d]*m", "");
-
 		int padding = (width - plainText.length()) / 2;
-
 		if (padding < 0) {
 			padding = 0;
 		}
-
 		System.out.println(" ".repeat(padding) + text);
 	}
 }

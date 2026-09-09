@@ -2,6 +2,7 @@ package bingo.game;
 
 import java.util.Scanner;
 
+import bingo.Main;
 import bingo.model.Player;
 import bingo.service.BingoService;
 import bingo.service.ScoreService;
@@ -13,7 +14,7 @@ public class Game {
 	public static void showGameMenu(Scanner scanner, Player player) {
 		while (true) {
 			Menu.showGameMenu();
-			int select = Input.nextInt(scanner, 0, 3);
+			int select = Input.nextInt(scanner, 0, 4);
 			switch (select) {
 			case 1:
 				startGame(scanner, player, 3);
@@ -23,6 +24,9 @@ public class Game {
 				break;
 			case 3:
 				startGame(scanner, player, 7);
+				break;
+			case 4:
+				Main.showSettings(scanner, player);
 				break;
 			case 0:
 				return;
@@ -105,7 +109,29 @@ public class Game {
 	}
 
 	public static void startChallenge(Scanner scanner, Player player, int size) {
+		int[][] card = BingoCard.createCard(size);
+		NumberGenerator generator = new NumberGenerator();
 
+		int turn = 0;
+		int limitTurn = size * size;
+		boolean isBingo = false;
+
+		while (turn < limitTurn) {
+			int number = generator.nextNumber();
+			BingoCard.openNumber(card, number);
+			turn++;
+			System.out.println();
+			BingoCard.showCard(card, turn, number);
+			if (BingoService.isBingo(card)) {
+				isBingo = true;
+				break;
+			}
+			if (turn < limitTurn) {
+				System.out.print("\n" + Color.ORANGE + "[ENTER]" + Color.RESET + " 次へ");
+				scanner.nextLine();
+			}
+		}
+		showChallengeResult(scanner, player, size, turn, isBingo);
 	}
 
 	public static void showNormalResult(Scanner scanner, Player player, int size, int turn) {
@@ -150,7 +176,6 @@ public class Game {
 		System.out.println("\n┌─ " + Color.ORANGE + "RESULT" + Color.RESET + " ─────────────────────────────┐");
 		System.out.println("│ PLAYER	: " + Color.ORANGE + player.getName() + Color.RESET);
 		System.out.println("│ TOTAL BINGO	: " + Color.ORANGE + bingoCount + Color.RESET);
-
 		if (isBest) {
 			System.out.println("│ BEST TURN	: " + Color.ORANGE + turn + Color.RESET + " (" + Color.ORANGE
 					+ "NEW" + Color.RESET + ")");
@@ -163,7 +188,30 @@ public class Game {
 		scanner.nextLine();
 	}
 
-	public static void showChallengeResult(Scanner scanner, Player player, int size, int turn) {
+	public static void showChallengeResult(Scanner scanner, Player player, int size, int turn, boolean isBingo) {
+		int limitTurn = size * size;
+		int remainingTurn = limitTurn - turn;
+		System.out.print("\n" + Color.ORANGE + "[ENTER]" + Color.RESET + " 結果を見る");
+		scanner.nextLine();
+		if (isBingo) {
+			Menu.printTitle("CHALLENGE CLEAR");
+		} else {
+			Menu.printTitle("CHALLENGE FAILED");
+		}
+		System.out.println("\n┌─ " + Color.ORANGE + "RESULT" + Color.RESET + " ─────────────────────────────┐");
+		System.out.println("│ PLAYER	: " + Color.ORANGE + player.getName() + Color.RESET);
+		System.out.println("│ LIMIT TURN	: " + Color.ORANGE + limitTurn + Color.RESET);
+		System.out.println("│ TURN		: " + Color.ORANGE + turn + Color.RESET);
+		if (isBingo) {
+			System.out.println("│ REMAINING	: " + Color.ORANGE + remainingTurn + Color.RESET);
+			System.out.println("│ RESULT	: " + Color.ORANGE + "CLEAR" + Color.RESET);
+			player.setChallengeCleared(true);
+		} else {
+			System.out.println("│ RESULT	: " + Color.ORANGE + "FAILED" + Color.RESET);
+		}
+		System.out.println("└──────────────────────────────────────┘");
+		System.out.print(Color.ORANGE + "\n[ENTER]" + Color.RESET + " 終了");
+		scanner.nextLine();
 
 	}
 }

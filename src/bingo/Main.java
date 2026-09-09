@@ -50,10 +50,10 @@ public class Main {
 		}
 	}
 
-	private static void showSettings(Scanner scanner, Player player) {
+	public static void showSettings(Scanner scanner, Player player) {
 		while (true) {
 			Menu.showSettings(player);
-			int select = Input.nextInt(scanner, 0, 3);
+			int select = Input.nextInt(scanner, 0, 2);
 			switch (select) {
 			case 1:
 				System.out.print("\n新しい名前 ▶ " + Color.YELLOW);

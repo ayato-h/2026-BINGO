@@ -8,15 +8,17 @@ public class Player {
 	private int bestTurn5x5;
 	private int bestTurn7x7;
 	private int endlessTurn;
+	private boolean challengeCleared;
 
 	public Player(String name) {
 		this.name = name;
-		this.mode = "NORMAL";
+		this.mode = "CHALLENGE";
 
 		bestTurn3x3 = 0;
 		bestTurn5x5 = 0;
 		bestTurn7x7 = 0;
 		endlessTurn = 0;
+		challengeCleared = false;
 	}
 
 	public String getName() {
@@ -66,4 +68,13 @@ public class Player {
 	public void setEndlessTurn(int endlessTurn) {
 		this.endlessTurn = endlessTurn;
 	}
+
+	public boolean isChallengeCleared() {
+		return challengeCleared;
+	}
+
+	public void setChallengeCleared(boolean challengeCleared) {
+		this.challengeCleared = challengeCleared;
+	}
+
 }
