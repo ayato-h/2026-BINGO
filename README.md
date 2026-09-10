@@ -11,7 +11,7 @@ Javaで制作したコンソール型のBINGOゲームです。
 **03 — [ゲームモード](#ゲームモード)**  
   └ [NORMAL](#normal)  
   └ [ENDLESS](#endless)  
-  └ [CHALLENGE](#challenge)
+  └ [CHALLENGE](#challenge)  
 **04 — [カードサイズ](#カードサイズ)**  
   └ [3×3](#3x3)  
   └ [5×5](#5x5)  
