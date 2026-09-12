@@ -67,11 +67,9 @@ public class Game {
 	public static void startEndless(Scanner scanner, Player player, int size) {
 		int[][] card = BingoCard.createCard(size);
 		NumberGenerator generator = new NumberGenerator();
-
 		int turn = 0;
 		int lastBingoTurn = 0;
 		int bingoCount = 0;
-
 		int totalBingo = size * 2 + 2;
 
 		while (bingoCount < totalBingo) {

@@ -37,7 +37,6 @@ public class Menu {
 			System.out.println("│ " + Color.ORANGE + "CHALLENGE" + Color.RESET + "  │ CLEARED 	  : "
 					+ Color.ORANGE + "FAILED" + Color.RESET);
 		}
-
 		System.out.println("└──────────────────────────────────────┘");
 
 		System.out.println(Color.ORANGE + "1." + Color.RESET + " ゲーム開始");
@@ -64,7 +63,6 @@ public class Menu {
 		System.out.println(Color.ORANGE + "1." + Color.RESET + " NORMAL");
 		System.out.println(Color.ORANGE + "2." + Color.RESET + " ENDLESS");
 		System.out.println(Color.ORANGE + "3." + Color.RESET + " CHALLENGE");
-		System.out.println(Color.ORANGE + "4." + Color.RESET + " モード");
 		printLine();
 		System.out.println(Color.ORANGE + "0." + Color.RESET + " 戻る");
 		System.out.print("\n▶ ");
@@ -102,6 +100,7 @@ public class Menu {
 		System.out.println(Color.ORANGE + "1." + Color.RESET + " 3 × 3");
 		System.out.println(Color.ORANGE + "2." + Color.RESET + " 5 × 5");
 		System.out.println(Color.ORANGE + "3." + Color.RESET + " 7 × 7");
+		System.out.println(Color.ORANGE + "4." + Color.RESET + " モード");
 		printLine();
 		System.out.println(Color.ORANGE + "0." + Color.RESET + " 戻る");
 		System.out.print("\n▶ ");

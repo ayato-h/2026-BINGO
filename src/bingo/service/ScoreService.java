@@ -4,7 +4,6 @@ import bingo.model.Player;
 
 public class ScoreService {
 	public static boolean updateBestTurn(Player player, int size, int turn) {
-
 		switch (size) {
 		case 3:
 			if (player.getBestTurn3x3() == 0 || turn < player.getBestTurn3x3()) {
