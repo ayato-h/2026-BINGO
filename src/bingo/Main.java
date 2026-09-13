@@ -92,9 +92,6 @@ public class Main {
 			case 2:
 				Menu.showMode(player, scanner);
 				break;
-			case 3:
-				System.out.println("文字色設定は現在制作中です。");
-				break;
 			case 0:
 				return;
 			}

@@ -62,13 +62,17 @@ public class Game {
 	public static void startNormal(Scanner scanner, Player player, int size) {
 		int[][] card = BingoCard.createCard(size);
 		NumberGenerator generator = new NumberGenerator();
+
 		int turn = 0;
+
 		while (true) {
 			int number = generator.nextNumber();
 			BingoCard.openNumber(card, number);
 			turn++;
+
 			System.out.println();
 			BingoCard.showCard(card, turn, number);
+
 			if (BingoService.isBingo(card)) {
 				showNormalResult(scanner, player, size, turn);
 				break;
@@ -76,12 +80,12 @@ public class Game {
 			System.out.print("\n" + Color.ORANGE + "[ENTER]" + Color.RESET + " 次へ");
 			scanner.nextLine();
 		}
-
 	}
 
 	public static void startEndless(Scanner scanner, Player player, int size) {
 		int[][] card = BingoCard.createCard(size);
 		NumberGenerator generator = new NumberGenerator();
+
 		int turn = 0;
 		int lastBingoTurn = 0;
 		int bingoCount = 0;
@@ -150,12 +154,14 @@ public class Game {
 	public static void showNormalResult(Scanner scanner, Player player, int size, int turn) {
 		boolean isBest = ScoreService.updateBestTurn(player, size, turn);
 		int score = ScoreService.calculateScore(size, turn);
+
 		System.out.print("\n" + Color.ORANGE + "[ENTER]" + Color.RESET + " 結果を見る");
 		Input.waitEnter(scanner);
 		Menu.printTitle("GAME CLEAR");
 		System.out.println("\n┌─ " + Color.ORANGE + "RESULT" + Color.RESET + " ─────────────────────────────┐");
 		System.out.println("│ PLAYER	: " + Color.ORANGE + player.getName() + Color.RESET);
 		System.out.println("│ SCORE		: " + Color.ORANGE + score + Color.RESET);
+
 		if (isBest) {
 			System.out.println("│ BEST TURN	: " + Color.ORANGE + turn + Color.RESET + " (" + Color.ORANGE
 					+ " NEW " + Color.RESET + ")");
@@ -204,8 +210,10 @@ public class Game {
 	public static void showChallengeResult(Scanner scanner, Player player, int size, int turn, boolean isBingo) {
 		int limitTurn = size * size;
 		int remainingTurn = limitTurn - turn;
+
 		System.out.print("\n" + Color.ORANGE + "[ENTER]" + Color.RESET + " 結果を見る");
 		Input.waitEnter(scanner);
+
 		if (isBingo) {
 			Menu.printTitle("CHALLENGE CLEAR");
 		} else {

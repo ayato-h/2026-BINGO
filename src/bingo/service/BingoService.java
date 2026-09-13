@@ -65,23 +65,6 @@ public class BingoService {
 		return false;
 	}
 
-	public static boolean isReachCell(int[][] card, int row, int col) {
-		int size = card.length;
-		if (isReachRow(card, row)) {
-			return true;
-		}
-		if (isReachColumn(card, col)) {
-			return true;
-		}
-		if (row == col && isReachDiagonalLeft(card)) {
-			return true;
-		}
-		if (row + col == size - 1 && isReachDiagonalRight(card)) {
-			return true;
-		}
-		return false;
-	}
-
 	private static boolean isBingoRow(int[][] card, int row) {
 		for (int col = 0; col < card.length; col++) {
 			if (!isOpen(card, row, col)) {
@@ -118,44 +101,54 @@ public class BingoService {
 		return true;
 	}
 
-	private static boolean isReachRow(int[][] card, int row) {
-		int openCount = 0;
-		for (int col = 0; col < card.length; col++) {
-			if (isOpen(card, row, col)) {
-				openCount++;
-			}
-		}
-		return openCount == card.length - 1;
-	}
+	public static boolean isReachCell(int[][] card, int row, int col) {
+		int size = card.length;
 
-	private static boolean isReachColumn(int[][] card, int col) {
 		int openCount = 0;
-		for (int row = 0; row < card.length; row++) {
-			if (isOpen(card, row, col)) {
+		for (int c = 0; c < size; c++) {
+			if (isOpen(card, row, c)) {
 				openCount++;
 			}
 		}
-		return openCount == card.length - 1;
-	}
+		if (openCount == size - 1) {
+			return true;
+		}
 
-	private static boolean isReachDiagonalLeft(int[][] card) {
-		int openCount = 0;
-		for (int i = 0; i < card.length; i++) {
-			if (isOpen(card, i, i)) {
+		openCount = 0;
+		for (int r = 0; r < size; r++) {
+			if (isOpen(card, r, col)) {
 				openCount++;
 			}
 		}
-		return openCount == card.length - 1;
-	}
+		if (openCount == size - 1) {
+			return true;
+		}
 
-	private static boolean isReachDiagonalRight(int[][] card) {
-		int openCount = 0;
-		for (int i = 0; i < card.length; i++) {
-			if (isOpen(card, i, card.length - 1 - i)) {
-				openCount++;
+		if (row == col) {
+			openCount = 0;
+			for (int i = 0; i < size; i++) {
+				if (isOpen(card, i, i)) {
+					openCount++;
+				}
+			}
+			if (openCount == size - 1) {
+				return true;
 			}
 		}
-		return openCount == card.length - 1;
+
+		if (row + col == size - 1) {
+			openCount = 0;
+			for (int i = 0; i < size; i++) {
+				if (isOpen(card, i, size - 1 - i)) {
+					openCount++;
+				}
+			}
+			if (openCount == size - 1) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 	private static boolean isOpen(int[][] card, int row, int col) {
