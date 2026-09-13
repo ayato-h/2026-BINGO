@@ -1,5 +1,6 @@
 package bingo.util;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import bingo.model.Player;
@@ -66,7 +67,21 @@ public class Menu {
 		printLine();
 		System.out.println(Color.ORANGE + "0." + Color.RESET + " 戻る");
 		System.out.print("\n▶ ");
-		int mode = Input.nextInt(scanner, 0, 3);
+		int mode;
+		while (true) {
+			try {
+				mode = scanner.nextInt();
+				scanner.nextLine();
+				if (0 <= mode && mode <= 3) {
+					break;
+				}
+				System.out.print(Color.RED + "> 0～3の数字を入力してください。" + Color.RESET + "\n▶ ");
+			} catch (InputMismatchException e) {
+				scanner.nextLine();
+				System.out.print(Color.RED + "> 数字を入力してください。" + Color.RESET + "\n▶ ");
+				continue;
+			}
+		}
 		switch (mode) {
 		case 1: {
 			player.setMode("NORMAL");
@@ -100,8 +115,8 @@ public class Menu {
 		System.out.println(Color.ORANGE + "1." + Color.RESET + " 3 × 3");
 		System.out.println(Color.ORANGE + "2." + Color.RESET + " 5 × 5");
 		System.out.println(Color.ORANGE + "3." + Color.RESET + " 7 × 7");
-		System.out.println(Color.ORANGE + "4." + Color.RESET + " モード");
 		printLine();
+		System.out.println(Color.ORANGE + "4." + Color.RESET + " モード");
 		System.out.println(Color.ORANGE + "0." + Color.RESET + " 戻る");
 		System.out.print("\n▶ ");
 	}

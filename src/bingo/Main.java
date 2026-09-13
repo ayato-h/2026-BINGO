@@ -1,11 +1,11 @@
 package bingo;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import bingo.game.Game;
 import bingo.model.Player;
 import bingo.util.Color;
-import bingo.util.Input;
 import bingo.util.Menu;
 
 public class Main {
@@ -19,7 +19,21 @@ public class Main {
 		scanner.nextLine();
 		while (true) {
 			Menu.showMainMenu(player);
-			int menu = Input.nextInt(scanner, 0, 3);
+			int menu;
+			while (true) {
+				try {
+					menu = scanner.nextInt();
+					scanner.nextLine();
+					if (0 <= menu && menu <= 3) {
+						break;
+					}
+					System.out.print(Color.RED + "> 0～3の数字を入力してください。" + Color.RESET + "\n▶ ");
+				} catch (InputMismatchException e) {
+					scanner.nextLine();
+					System.out.print(Color.RED + "> 数字を入力してください。" + Color.RESET + "\n▶ ");
+					continue;
+				}
+			}
 			switch (menu) {
 			case 1:
 				Game.showGameMenu(scanner, player);
@@ -53,7 +67,21 @@ public class Main {
 	public static void showSettings(Scanner scanner, Player player) {
 		while (true) {
 			Menu.showSettings(player);
-			int select = Input.nextInt(scanner, 0, 2);
+			int select;
+			while (true) {
+				try {
+					select = scanner.nextInt();
+					scanner.nextLine();
+					if (0 <= select && select <= 2) {
+						break;
+					}
+					System.out.print(Color.RED + "> 0～2の数字を入力してください。" + Color.RESET + "\n▶ ");
+				} catch (InputMismatchException e) {
+					scanner.nextLine();
+					System.out.print(Color.RED + "> 数字を入力してください。" + Color.RESET + "\n▶ ");
+					continue;
+				}
+			}
 			switch (select) {
 			case 1:
 				System.out.print("\n新しい名前 ▶ " + Color.YELLOW);

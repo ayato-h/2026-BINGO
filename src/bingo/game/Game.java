@@ -1,5 +1,6 @@
 package bingo.game;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import bingo.Main;
@@ -14,7 +15,21 @@ public class Game {
 	public static void showGameMenu(Scanner scanner, Player player) {
 		while (true) {
 			Menu.showGameMenu();
-			int select = Input.nextInt(scanner, 0, 4);
+			int select;
+			while (true) {
+				try {
+					select = scanner.nextInt();
+					scanner.nextLine();
+					if (0 <= select && select <= 4) {
+						break;
+					}
+					System.out.print(Color.RED + "> 0～4の数字を入力してください。" + Color.RESET + "\n▶ ");
+				} catch (InputMismatchException e) {
+					scanner.nextLine();
+					System.out.print(Color.RED + "> 数字を入力してください。" + Color.RESET + "\n▶ ");
+					continue;
+				}
+			}
 			switch (select) {
 			case 1:
 				startGame(scanner, player, 3);
