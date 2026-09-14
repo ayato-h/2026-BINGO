@@ -155,11 +155,9 @@ public class Game {
 		boolean isBest = ScoreService.updateBestTurn(player, size, turn);
 		int score = ScoreService.calculateScore(size, turn);
 
-		System.out.print("\n" + Color.ORANGE + "[ENTER]" + Color.RESET + " 結果を見る");
-		Input.waitEnter(scanner);
 		Menu.printTitle("GAME CLEAR");
-		System.out.println("\n┌─ " + Color.ORANGE + "RESULT" + Color.RESET + " ─────────────────────────────┐");
-		System.out.println("│ PLAYER	: " + Color.ORANGE + player.getName() + Color.RESET);
+		showGameResult(scanner, player);
+
 		System.out.println("│ SCORE		: " + Color.ORANGE + score + Color.RESET);
 
 		if (isBest) {
@@ -179,9 +177,7 @@ public class Game {
 			}
 		}
 		System.out.println("│ TURN		: " + Color.ORANGE + turn + Color.RESET + "");
-		System.out.println("└──────────────────────────────────────┘");
-		System.out.print(Color.ORANGE + "\n[ENTER]" + Color.RESET + " 終了");
-		scanner.nextLine();
+		showGameResult(scanner);
 	}
 
 	public static void showEndlessResult(Scanner scanner, Player player, int size, int turn, int bingoCount) {
@@ -189,11 +185,9 @@ public class Game {
 		if (isBest) {
 			player.setEndlessTurn(turn);
 		}
-		System.out.print("\n" + Color.ORANGE + "[ENTER]" + Color.RESET + " 結果を見る");
-		Input.waitEnter(scanner);
+
 		Menu.printTitle("GAME CLEAR");
-		System.out.println("\n┌─ " + Color.ORANGE + "RESULT" + Color.RESET + " ─────────────────────────────┐");
-		System.out.println("│ PLAYER	: " + Color.ORANGE + player.getName() + Color.RESET);
+		showGameResult(scanner, player);
 		System.out.println("│ TOTAL BINGO	: " + Color.ORANGE + bingoCount + Color.RESET);
 		if (isBest) {
 			System.out.println("│ BEST TURN	: " + Color.ORANGE + turn + Color.RESET + " (" + Color.ORANGE
@@ -202,25 +196,14 @@ public class Game {
 			System.out.println("│ BEST TURN	: " + Color.ORANGE + player.getEndlessTurn() + Color.RESET);
 		}
 		System.out.println("│ TURN		: " + Color.ORANGE + turn + Color.RESET + "");
-		System.out.println("└──────────────────────────────────────┘");
-		System.out.print(Color.ORANGE + "\n[ENTER]" + Color.RESET + " 終了");
-		scanner.nextLine();
+		showGameResult(scanner);
 	}
 
 	public static void showChallengeResult(Scanner scanner, Player player, int size, int turn, boolean isBingo) {
 		int limitTurn = size * size;
 		int remainingTurn = limitTurn - turn;
 
-		System.out.print("\n" + Color.ORANGE + "[ENTER]" + Color.RESET + " 結果を見る");
-		Input.waitEnter(scanner);
-
-		if (isBingo) {
-			Menu.printTitle("CHALLENGE CLEAR");
-		} else {
-			Menu.printTitle("CHALLENGE FAILED");
-		}
-		System.out.println("\n┌─ " + Color.ORANGE + "RESULT" + Color.RESET + " ─────────────────────────────┐");
-		System.out.println("│ PLAYER	: " + Color.ORANGE + player.getName() + Color.RESET);
+		showGameResult(scanner, player, isBingo);
 		System.out.println("│ LIMIT TURN	: " + Color.ORANGE + limitTurn + Color.RESET);
 		System.out.println("│ TURN		: " + Color.ORANGE + turn + Color.RESET);
 		if (isBingo) {
@@ -230,9 +213,31 @@ public class Game {
 		} else {
 			System.out.println("│ RESULT	: " + Color.ORANGE + "FAILED" + Color.RESET);
 		}
+		showGameResult(scanner);
+	}
+
+	public static void showGameResult(Scanner scanner, Player player) {
+		System.out.print("\n" + Color.ORANGE + "[ENTER]" + Color.RESET + " 結果を見る");
+		Input.waitEnter(scanner);
+		System.out.println("\n┌─ " + Color.ORANGE + "RESULT" + Color.RESET + " ─────────────────────────────┐");
+		System.out.println("│ PLAYER	: " + Color.ORANGE + player.getName() + Color.RESET);
+	}
+
+	public static void showGameResult(Scanner scanner, Player player, boolean isBingo) {
+		System.out.print("\n" + Color.ORANGE + "[ENTER]" + Color.RESET + " 結果を見る");
+		Input.waitEnter(scanner);
+		if (isBingo) {
+			Menu.printTitle("CHALLENGE CLEAR");
+		} else {
+			Menu.printTitle("CHALLENGE FAILED");
+		}
+		System.out.println("\n┌─ " + Color.ORANGE + "RESULT" + Color.RESET + " ─────────────────────────────┐");
+		System.out.println("│ PLAYER	: " + Color.ORANGE + player.getName() + Color.RESET);
+	}
+
+	public static void showGameResult(Scanner scanner) {
 		System.out.println("└──────────────────────────────────────┘");
 		System.out.print(Color.ORANGE + "\n[ENTER]" + Color.RESET + " 終了");
 		scanner.nextLine();
-
 	}
 }

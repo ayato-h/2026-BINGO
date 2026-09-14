@@ -21,12 +21,8 @@ public class BingoCard {
 
 		for (int row = 0; row < size; row++) {
 			for (int col = 0; col < size; col++) {
-				if (size % 2 == 1
-						&& row == size / 2
-						&& col == size / 2) {
-
+				if (row == size / 2 && col == size / 2) {
 					card[row][col] = 0;
-
 				} else {
 					card[row][col] = numbers.get(index++);
 				}
@@ -50,9 +46,7 @@ public class BingoCard {
 
 			for (int col = 0; col < size; col++) {
 
-				if (size % 2 == 1
-						&& row == size / 2
-						&& col == size / 2) {
+				if (row == size / 2 && col == size / 2) {
 
 					if (BingoService.isBingoCell(card, row, col)) {
 						line.append(Color.RED + "FREE" + Color.RESET + "|");
@@ -114,7 +108,6 @@ public class BingoCard {
 	}
 
 	public static void openNumber(int[][] card, int number) {
-
 		for (int row = 0; row < card.length; row++) {
 			for (int col = 0; col < card[row].length; col++) {
 				if (card[row][col] == number) {
@@ -122,6 +115,5 @@ public class BingoCard {
 				}
 			}
 		}
-
 	}
 }

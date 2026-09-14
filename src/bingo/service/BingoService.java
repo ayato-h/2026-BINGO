@@ -153,9 +153,7 @@ public class BingoService {
 
 	private static boolean isOpen(int[][] card, int row, int col) {
 		int size = card.length;
-		if (size % 2 == 1
-				&& row == size / 2
-				&& col == size / 2) {
+		if (row == size / 2 && col == size / 2) {
 			return true;
 		}
 		return card[row][col] == -1;
