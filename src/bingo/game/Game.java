@@ -14,7 +14,7 @@ import bingo.util.Menu;
 public class Game {
 	public static void showGameMenu(Scanner scanner, Player player) {
 		while (true) {
-			Menu.showGameMenu();
+			Menu.showGameMenu(player);
 			int select;
 			while (true) {
 				try {

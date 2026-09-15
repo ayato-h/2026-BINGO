@@ -110,15 +110,19 @@ public class Menu {
 		printLine();
 	}
 
-	public static void showGameMenu() {
+	public static void showGameMenu(Player player) {
 		printTitle("GAME START");
-		System.out.println(Color.ORANGE + "1." + Color.RESET + " 3 × 3");
-		System.out.println(Color.ORANGE + "2." + Color.RESET + " 5 × 5");
-		System.out.println(Color.ORANGE + "3." + Color.RESET + " 7 × 7");
-		printLine();
-		System.out.println(Color.ORANGE + "4." + Color.RESET + " モード");
-		System.out.println(Color.ORANGE + "0." + Color.RESET + " 戻る");
-		System.out.print("\n▶ ");
+		System.out.println("┌──────────────────────────────────────┐");
+		System.out.println("│ " + Color.ORANGE + player.getMode() + Color.RESET);
+		System.out.println("├──────────────────────────────────────┤ ");
+		System.out.println("│ " + Color.ORANGE + "1." + Color.RESET + " 3 × 3");
+		System.out.println("│ " + Color.ORANGE + "2." + Color.RESET + " 5 × 5");
+		System.out.println("│ " + Color.ORANGE + "3." + Color.RESET + " 7 × 7");
+		System.out.println("├──────────────────────────────────────┤ ");
+		System.out.println("│ " + Color.ORANGE + "4." + Color.RESET + " モード");
+		System.out.println("│ " + Color.ORANGE + "0." + Color.RESET + " 戻る");
+		System.out.println("└──────────────────────────────────────┘");
+		System.out.print("▶ ");
 	}
 
 	public static void exit() {
