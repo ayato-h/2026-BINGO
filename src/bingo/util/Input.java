@@ -15,4 +15,14 @@ public class Input {
 			}
 		}
 	}
+
+	public static boolean exit(Scanner scanner) {
+		String input = scanner.nextLine();
+
+		if (input.equalsIgnoreCase("exit")) {
+			return true;
+		}
+
+		return false;
+	}
 }

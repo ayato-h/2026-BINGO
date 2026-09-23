@@ -119,7 +119,7 @@ public class Menu {
 		System.out.println("│ " + Color.ORANGE + "2." + Color.RESET + " 5 × 5");
 		System.out.println("│ " + Color.ORANGE + "3." + Color.RESET + " 7 × 7");
 		System.out.println("├──────────────────────────────────────┤ ");
-		System.out.println("│ " + Color.ORANGE + "4." + Color.RESET + " モード");
+		System.out.println("│ " + Color.ORANGE + "4." + Color.RESET + " 設定");
 		System.out.println("│ " + Color.ORANGE + "0." + Color.RESET + " 戻る");
 		System.out.println("└──────────────────────────────────────┘");
 		System.out.print("▶ ");

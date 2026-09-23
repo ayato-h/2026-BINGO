@@ -77,8 +77,10 @@ public class Game {
 				showNormalResult(scanner, player, size, turn);
 				break;
 			}
-			System.out.print("\n" + Color.ORANGE + "[ENTER]" + Color.RESET + " 次へ");
-			scanner.nextLine();
+			System.out.print("\n" + Color.ORANGE + "[ENTER]" + Color.RESET + " 次へ ");
+			if (Input.exit(scanner)) {
+				return;
+			}
 		}
 	}
 
@@ -114,12 +116,16 @@ public class Game {
 				System.out.println("BINGO 		: " + Color.ORANGE + newBingoCount + Color.RESET);
 
 				if (bingoCount < totalBingo) {
-					System.out.print("\n" + Color.ORANGE + "[ENTER]" + Color.RESET + " 次のBINGOへ");
-					scanner.nextLine();
+					System.out.print("\n" + Color.ORANGE + "[ENTER]" + Color.RESET + " 次のBINGOへ ");
+					if (Input.exit(scanner)) {
+						return;
+					}
 				}
 			} else {
-				System.out.print("\n" + Color.ORANGE + "[ENTER]" + Color.RESET + " 次へ");
-				scanner.nextLine();
+				System.out.print("\n" + Color.ORANGE + "[ENTER]" + Color.RESET + " 次へ ");
+				if (Input.exit(scanner)) {
+					return;
+				}
 			}
 		}
 		showEndlessResult(scanner, player, size, turn, bingoCount);
@@ -144,8 +150,10 @@ public class Game {
 				break;
 			}
 			if (turn < limitTurn) {
-				System.out.print("\n" + Color.ORANGE + "[ENTER]" + Color.RESET + " 次へ");
-				scanner.nextLine();
+				System.out.print("\n" + Color.ORANGE + "[ENTER]" + Color.RESET + " 次へ ");
+				if (Input.exit(scanner)) {
+					return;
+				}
 			}
 		}
 		showChallengeResult(scanner, player, size, turn, isBingo);
