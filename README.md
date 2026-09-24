@@ -7,52 +7,15 @@ Javaで制作したコンソール型のBINGOゲームです。
 
 ## 目次
 
-## 目次
-
-<table width="100%">
-  <tr>
-    <th width="10%">No.</th>
-    <th width="90%">Section</th>
-  </tr>
-  <tr>
-    <td align="center">01</td>
-    <td><a href="#ゲーム概要">ゲーム概要</a></td>
-  </tr>
-  <tr>
-    <td align="center">02</td>
-    <td><a href="#主な機能">主な機能</a></td>
-  </tr>
-  <tr>
-    <td align="center">03</td>
-    <td><a href="#ゲームモード">ゲームモード</a></td>
-  </tr>
-  <tr>
-    <td align="center">└</td>
-    <td>
-      <a href="#normal">NORMAL</a> /
-      <a href="#endless">ENDLESS</a> /
-      <a href="#challenge">CHALLENGE</a>
-    </td>
-  </tr>
-  <tr>
-    <td align="center">04</td>
-    <td><a href="#カードサイズ">カードサイズ</a></td>
-  </tr>
-  <tr>
-    <td align="center">└</td>
-    <td>
-      <a href="#3x3">3 × 3</a> /
-      <a href="#5x5">5 × 5</a> /
-      <a href="#7x7">7 × 7</a>
-    </td>
-  </tr>
-  <tr>
-    <td align="center">05</td>
-    <td><a href="#コンソール表示">コンソール表示</a></td>
-  </tr>
-</table>
-
-
+| No. | Section |
+|:---:|:---|
+| 01 | [ゲーム概要](#ゲーム概要) |
+| 02 | [主な機能](#主な機能) |
+| 03 | [ゲームモード](#ゲームモード) |
+| └ | [NORMAL](#normal) / [ENDLESS](#endless) / [CHALLENGE](#challenge) |
+| 04 | [カードサイズ](#カードサイズ) |
+| └ | [3 × 3](#3x3) / [5 × 5](#5x5) / [7 × 7](#7x7) |
+| 05 | [コンソール表示](#コンソール表示) |
 
 ## ゲーム概要
 
