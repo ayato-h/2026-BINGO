@@ -164,7 +164,6 @@ public class Game {
 		int score = ScoreService.calculateScore(size, turn);
 
 		showGameResult(scanner, player);
-
 		System.out.println("│ SCORE		: " + Color.ORANGE + score + Color.RESET);
 		if (isBest) {
 			System.out.println("│ BEST TURN	: " + Color.ORANGE + turn + Color.RESET + " (" + Color.ORANGE
@@ -193,7 +192,6 @@ public class Game {
 		}
 
 		showGameResult(scanner, player);
-
 		System.out.println("│ TOTAL BINGO	: " + Color.ORANGE + bingoCount + Color.RESET);
 		if (isBest) {
 			System.out.println("│ BEST TURN	: " + Color.ORANGE + turn + Color.RESET + " (" + Color.ORANGE
@@ -210,7 +208,6 @@ public class Game {
 		int remainingTurn = limitTurn - turn;
 
 		showGameResult(scanner, player, isBingo);
-
 		System.out.println("│ LIMIT TURN	: " + Color.ORANGE + limitTurn + Color.RESET);
 		System.out.println("│ TURN		: " + Color.ORANGE + turn + Color.RESET);
 		if (isBingo) {
